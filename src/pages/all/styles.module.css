@@ -1,0 +1,30 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-xl) var(--spacing-lg);
+  margin-bottom: var(--spacing-3xl);
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header {
+    flex-direction: column;
+  }
+}
+
+.card {
+  height: 240px;
+}
+
+.separator {
+  margin: var(--spacing-xl) 0;
+}

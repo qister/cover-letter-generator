@@ -1,0 +1,71 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: var(--container-padding);
+  padding-block: var(--spacing-2xl);
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+}
+
+.totalText {
+  font-family: var(--font-family-regular);
+  font-size: var(--font-size-md);
+}
+
+.logo {
+  align-items: center;
+}
+
+.logo img {
+  width: 179px;
+  height: 48px;
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  white-space: nowrap;
+}
+
+.progress span {
+  color: var(--color-text-secondary);
+}
+
+.progressDots {
+  display: flex;
+  gap: 4px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background-color: rgba(16, 24, 40, .24);
+}
+
+.dot.filled {
+  background-color: var(--color-text-primary);
+}
+
+.homeButton {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+}
+
+.homeButton img {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 768px) {
+  .totalText {
+    display: none;
+  }
+}

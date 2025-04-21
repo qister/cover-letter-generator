@@ -1,0 +1,23 @@
+.h1 {
+  /* font-size: 36px; */
+
+  text-align: left;
+  font-family: 'FixelDisplay';
+  font-weight: 600;
+}
+
+.m {
+  font-size: var(--font-size-lg);
+}
+
+.l {
+  font-size: 48px;
+}
+
+.primary {
+  color: var(--color-text-primary);
+}
+
+.secondary {
+  color: var(--color-text-secondary);
+}
