@@ -11,20 +11,24 @@
   margin-bottom: var(--spacing-3xl);
 }
 
-@media (max-width: 768px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .header {
-    flex-direction: column;
-  }
-}
-
 .card {
   height: 240px;
 }
 
 .separator {
   margin: var(--spacing-xl) 0;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    height: 160px;
+  }
+
+  .header {
+    flex-direction: column;
+  }
 }
