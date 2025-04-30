@@ -11,7 +11,9 @@ import styles from './styles.module.css'
 
 export const All = () => {
   const { applicationsCount, setApplicationsCount } = useApplicationsCount()
-  const [applications, setApplications] = useState(coverLetterRepository.getAll())
+  const [applications, setApplications] = useState(
+    coverLetterRepository.getAll(),
+  )
 
   return (
     <div>
@@ -40,7 +42,9 @@ export const All = () => {
           </div>
         ))}
       </div>
-      {applicationsCount < totalApplicationsGoal && <Goal />}
+      {applicationsCount < totalApplicationsGoal && (
+        <Goal action='link' to='/new' />
+      )}
       <Space />
     </div>
   )

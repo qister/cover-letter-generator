@@ -1,7 +1,5 @@
 import { StorageProvider } from '../storage/storageProvider'
 
-const generateId = () => Date.now().toString()
-
 export interface CLItem {
   id: string
   cl: string
@@ -14,9 +12,8 @@ export class CoverLetterRepository {
 
   constructor(private storage: StorageProvider) {}
 
-  add(cl: string): number {
+  add(newItem: CLItem) {
     const list = this.getAll()
-    const newItem = { id: generateId(), cl }
     list.push(newItem)
     this.storage.set(this.key, list)
 
@@ -33,5 +30,10 @@ export class CoverLetterRepository {
 
   setAll(list: CLItem[]) {
     this.storage.set(this.key, list)
+  }
+
+  deleteById(id: string) {
+    const filtered = this.getAll().filter(({ id: itemId }) => itemId !== id)
+    this.setAll(filtered)
   }
 }

@@ -23,7 +23,11 @@ const Dots = ({ total, filled }: { total: number; filled: number }) => (
   </div>
 )
 
-export const Goal = () => {
+type Props =
+  | { action: 'button'; onCreate: () => void }
+  | { action: 'link'; to: string }
+
+export const Goal = (props: Props) => {
   const { applicationsCount } = useApplicationsCount()
 
   return (
@@ -34,9 +38,19 @@ export const Goal = () => {
         <br />
         today to get hired faster
       </p>
-      <Link to='/new'>
-        <Button size='l' text='Create New' icon={<Icon image='plus' />} />
-      </Link>
+
+      {props.action === 'link' ? (
+        <Link to={props.to}>
+          <Button size='l' text='Create New' icon={<Icon image='plus' />} />
+        </Link>
+      ) : (
+        <Button
+          size='l'
+          text='Create New'
+          icon={<Icon image='plus' />}
+          onClick={props.onCreate}
+        />
+      )}
       <div className={styles.dotsSection}>
         <Dots total={totalApplicationsGoal} filled={applicationsCount} />
         <span className={styles.progressText}>

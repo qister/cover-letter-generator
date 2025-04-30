@@ -27,16 +27,20 @@ type Inputs = {
   additionalDetails: string
 }
 
+const generateId = () => Date.now().toString()
+
 export const New = () => {
   const { applicationsCount, setApplicationsCount } = useApplicationsCount()
   const [isGenerating, setIsGenerating] = useState(false)
   const [previewText, setPreviewText] = useState<string>()
+  const [lastClId, setLastClId] = useState<string>()
 
   const {
     register,
     handleSubmit,
     control,
     formState: { errors, isValid },
+    reset,
     setFocus,
   } = useForm<Inputs>({ mode: 'onChange' })
 
@@ -51,10 +55,15 @@ export const New = () => {
         return
       }
       setPreviewText(coverLetter)
-      const total = coverLetterRepository.add(coverLetter)
+      if (lastClId) {
+        coverLetterRepository.deleteById(lastClId)
+      }
+      const id = generateId()
+      setLastClId(id)
+      const total = coverLetterRepository.add({ cl: coverLetter, id })
       setApplicationsCount(total)
     },
-    [setApplicationsCount],
+    [setApplicationsCount, lastClId],
   )
 
   const [jobTitle, companyName, additionalDetails] = useWatch({
@@ -66,6 +75,11 @@ export const New = () => {
     () => [jobTitle, companyName].filter(Boolean).join(', '),
     [jobTitle, companyName],
   )
+
+  const onGoalClick = useCallback(() => {
+    reset()
+    setFocus('jobTitle')
+  }, [reset, setFocus])
 
   return (
     <div>
@@ -117,29 +131,16 @@ export const New = () => {
                 {(additionalDetails || '').length}/{MAX_CHARS}
               </div>
             </div>
-            {previewText ? (
-              <Button
-                icon={<Icon image='repeat' />}
-                text='Try Again'
-                size='l'
-                allWidth
-                mode='secondary'
-                onClick={(e) => {
-                  e.preventDefault()
-                  setPreviewText(undefined)
-                  setFocus('jobTitle')
-                }}
-              />
-            ) : (
-              <Button
-                type='submit'
-                text='Generate Now'
-                size='l'
-                allWidth
-                disabled={!isValid || isGenerating}
-                isLoading={isGenerating}
-              />
-            )}
+            <Button
+              icon={previewText ? <Icon image='repeat' /> : undefined}
+              text={previewText ? 'Try Again' : 'Generate Now'}
+              size='l'
+              allWidth
+              mode={previewText ? 'secondary' : 'primary'}
+              type='submit'
+              disabled={!isValid || isGenerating}
+              isLoading={isGenerating}
+            />
           </form>
         </div>
         <div className={styles.previewContentWrapper}>
@@ -154,7 +155,7 @@ export const New = () => {
       {applicationsCount < totalApplicationsGoal && (
         <>
           <Space />
-          <Goal />
+          <Goal action='button' onCreate={onGoalClick} />
           <Space />
         </>
       )}
