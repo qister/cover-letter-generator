@@ -11,13 +11,10 @@ import {
   Title,
 } from '../../ui'
 import { Goal, PreviewContent } from '../../components'
-import {
-  addCoverLetterToStorage,
-  // generateCoverLetterOffline
-} from '../../utils/common'
 import { totalApplicationsGoal } from '../../utils/constants'
 import { useApplicationsCount } from '../../totalApplicationsContext'
 import { generateCoverLetter } from '../../api/generateCoverLetter'
+import { coverLetterRepository } from '../../repositories'
 
 import styles from './styles.module.css'
 
@@ -54,7 +51,7 @@ export const New = () => {
         return
       }
       setPreviewText(coverLetter)
-      const total = addCoverLetterToStorage(coverLetter)
+      const total = coverLetterRepository.add(coverLetter)
       setApplicationsCount(total)
     },
     [setApplicationsCount],

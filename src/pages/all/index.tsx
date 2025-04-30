@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom'
 
 import { Button, Icon, Separator, Space, Title } from '../../ui'
 import { Goal, PreviewContent } from '../../components'
-import { getCoverLetterList, setCoverLetterList } from '../../utils/common'
 import { useApplicationsCount } from '../../totalApplicationsContext'
 import { totalApplicationsGoal } from '../../utils/constants'
+import { coverLetterRepository } from '../../repositories'
 
 import styles from './styles.module.css'
 
 export const All = () => {
   const { applicationsCount, setApplicationsCount } = useApplicationsCount()
-  const [applications, setApplications] = useState(getCoverLetterList())
+  const [applications, setApplications] = useState(coverLetterRepository.getAll())
 
   return (
     <div>
@@ -34,7 +34,7 @@ export const All = () => {
                 )
                 setApplications(newApplications)
                 setApplicationsCount(newApplications.length)
-                setCoverLetterList(newApplications)
+                coverLetterRepository.setAll(newApplications)
               }}
             />
           </div>

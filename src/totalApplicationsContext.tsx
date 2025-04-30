@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useContext, useState } from 'react'
 
-import { getTotalCoverLetterCount } from './utils/common'
+import { coverLetterRepository } from './repositories'
 
 const ApplicationsCountContext = createContext<{
   applicationsCount: number
@@ -16,7 +16,7 @@ export const ApplicationsCountProvider = ({
   children: ReactNode
 }) => {
   const [applicationsCount, setApplicationsCount] = useState<number>(
-    getTotalCoverLetterCount(),
+    coverLetterRepository.getCount(),
   )
 
   return (
