@@ -1,5 +1,9 @@
 #  Cover letter generator
 
+Приложение, которое позволяет генерить application для подачи на вакансию.
+
+[Демо](https://cover-letter-generator-xi.vercel.app/)
+
 Структура проекта:
 
 - api/ - код для работы с API
