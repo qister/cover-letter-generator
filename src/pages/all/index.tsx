@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Button, Icon, Separator, Space, Title } from '../../ui'
 import { Goal, PreviewContent } from '../../components'
 import { useApplications } from '../../applicationsContext'
-import { totalApplicationsGoal } from '../../utils/constants'
+import { totalApplicationsGoal } from '../../constants'
 import { coverLetterRepository } from '../../repositories'
 
 import styles from './styles.module.css'

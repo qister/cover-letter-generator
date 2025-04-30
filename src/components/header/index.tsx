@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 import { Icon, Dots } from '../../ui'
 import { useApplications } from '../../applicationsContext'
-import { totalApplicationsGoal } from '../../utils/constants'
+import { totalApplicationsGoal } from '../../constants'
 import logo from './logo.svg'
 
 import styles from './styles.module.css'

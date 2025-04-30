@@ -11,7 +11,7 @@ import {
   Title,
 } from '../../ui'
 import { Goal, PreviewContent } from '../../components'
-import { totalApplicationsGoal } from '../../utils/constants'
+import { totalApplicationsGoal } from '../../constants'
 import { useApplications } from '../../applicationsContext'
 import { generateCoverLetter } from '../../api/generateCoverLetter'
 import { coverLetterRepository } from '../../repositories'

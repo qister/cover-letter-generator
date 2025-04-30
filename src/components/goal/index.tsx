@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import { useApplications } from '../../applicationsContext'
-import { totalApplicationsGoal } from '../../utils/constants'
+import { totalApplicationsGoal } from '../../constants'
 import { Icon, Dots, Button } from '../../ui'
 
 import styles from './styles.module.css'
