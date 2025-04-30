@@ -15,7 +15,7 @@ function App() {
           <Route path='/' element={<Layout />}>
             <Route path='new' element={<New />} />
             <Route path='all' element={<All />} />
-            <Route index element={<Navigate to='new' />} />
+            <Route index element={<Navigate to='all' />} />
           </Route>
         </Routes>
       </ApplicationsProvider>
