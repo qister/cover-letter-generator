@@ -40,7 +40,6 @@ export const New = () => {
     handleSubmit,
     control,
     formState: { errors, isValid },
-    reset,
     setFocus,
   } = useForm<Inputs>({ mode: 'onChange' })
 
@@ -77,9 +76,10 @@ export const New = () => {
   )
 
   const onGoalClick = useCallback(() => {
-    reset()
     setFocus('jobTitle')
-  }, [reset, setFocus])
+    setPreviewText(undefined)
+    setLastClId(undefined)
+  }, [setFocus])
 
   return (
     <div>
