@@ -1,25 +1,11 @@
 import { Link } from 'react-router-dom'
-import cn from 'classnames'
 
-import { Icon } from '../../ui'
+import { Icon, Dots } from '../../ui'
 import { useApplicationsCount } from '../../totalApplicationsContext'
 import { totalApplicationsGoal } from '../../utils/constants'
 import logo from './logo.svg'
 
 import styles from './styles.module.css'
-
-const Dots = ({ total, filled }: { filled: number; total: number }) => (
-  <div className={styles.progressDots}>
-    {Array(total)
-      .fill(null)
-      .map((_, i) => (
-        <div
-          key={i}
-          className={cn(styles.dot, { [styles.filled]: i < filled })}
-        />
-      ))}
-  </div>
-)
 
 export const Header = () => {
   const { applicationsCount } = useApplicationsCount()
@@ -36,7 +22,11 @@ export const Header = () => {
           {applicationsCount}/{totalApplicationsGoal} applications generated
         </span>
         {applicationsCount < totalApplicationsGoal ? (
-          <Dots total={totalApplicationsGoal} filled={applicationsCount} />
+          <Dots
+            total={totalApplicationsGoal}
+            filled={applicationsCount}
+            type='circles'
+          />
         ) : (
           <Icon image='check' alt='done' />
         )}

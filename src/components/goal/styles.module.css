@@ -29,23 +29,6 @@
   gap: var(--spacing-sm);
 }
 
-.progressDots {
-  display: flex;
-  gap: var(--spacing-sm);
-  justify-content: center;
-}
-
-.dot {
-  width: 32px;
-  height: var(--spacing-sm);
-  border-radius: 4px;
-  background-color: rgba(16, 24, 40, .24);
-}
-
-.dot.filled {
-  background-color: var(--color-text-primary);
-}
-
 .progressText {
   color: var(--color-text-secondary);
   font-size: var(--font-size-xs);

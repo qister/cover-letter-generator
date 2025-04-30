@@ -1,0 +1,30 @@
+.progressDots {
+  display: flex;
+
+}
+
+.lines.progressDots {
+  gap: var(--spacing-sm);
+}
+
+.circles.progressDots {
+  gap: 4px;
+}
+
+.dot {
+  height: var(--spacing-sm);
+  border-radius: 4px;
+  background-color: rgba(16, 24, 40, .24);
+}
+
+.lines .dot {
+  width: 32px;
+}
+
+.circles .dot {
+  width: var(--spacing-sm);
+}
+
+.dot.filled {
+  background-color: var(--color-text-primary);
+}
