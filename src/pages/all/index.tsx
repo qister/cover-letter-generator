@@ -33,6 +33,7 @@ export const All = () => {
                 setApplications(newApplications)
                 coverLetterRepository.setAll(newApplications)
               }}
+              noScroll
             />
           </div>
         ))}

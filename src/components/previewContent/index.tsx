@@ -10,6 +10,7 @@ interface PreviewContentProps {
   onDelete?: () => void
   isLoading?: boolean
   placeholder?: string
+  noScroll?: boolean
 }
 
 export const PreviewContent = ({
@@ -17,6 +18,7 @@ export const PreviewContent = ({
   onDelete,
   isLoading = false,
   placeholder = '',
+  noScroll = false
 }: PreviewContentProps) => {
   const [copied, setCopied] = useState(false)
 
@@ -34,7 +36,7 @@ export const PreviewContent = ({
   )
 
   return (
-    <div className={cn(styles.previewContainer)}>
+    <div className={cn(styles.previewContainer, noScroll && styles.noScroll)}>
       <div
         className={cn(styles.previewContent, { [styles.hidden]: isLoading })}
       >

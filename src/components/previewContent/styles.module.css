@@ -19,6 +19,10 @@
   transition: opacity var(--transition-default);
 }
 
+.noScroll .previewContent {
+  overflow-y: hidden;
+}
+
 .previewContent.hidden {
   opacity: 0;
 }
