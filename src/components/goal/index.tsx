@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import { useApplicationsCount } from '../../totalApplicationsContext'
+import { useApplications } from '../../applicationsContext'
 import { totalApplicationsGoal } from '../../utils/constants'
 import { Icon, Dots, Button } from '../../ui'
 
@@ -11,7 +11,7 @@ type Props =
   | { action: 'link'; to: string }
 
 export const Goal = (props: Props) => {
-  const { applicationsCount } = useApplicationsCount()
+  const { applications } = useApplications()
 
   return (
     <div className={styles.goalSection}>
@@ -37,11 +37,11 @@ export const Goal = (props: Props) => {
       <div className={styles.dotsSection}>
         <Dots
           total={totalApplicationsGoal}
-          filled={applicationsCount}
+          filled={applications.length}
           type='lines'
         />
         <span className={styles.progressText}>
-          {applicationsCount} out of {totalApplicationsGoal}
+          {applications.length} out of {totalApplicationsGoal}
         </span>
       </div>
     </div>

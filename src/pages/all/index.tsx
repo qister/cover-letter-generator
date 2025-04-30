@@ -1,19 +1,15 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { Button, Icon, Separator, Space, Title } from '../../ui'
 import { Goal, PreviewContent } from '../../components'
-import { useApplicationsCount } from '../../totalApplicationsContext'
+import { useApplications } from '../../applicationsContext'
 import { totalApplicationsGoal } from '../../utils/constants'
 import { coverLetterRepository } from '../../repositories'
 
 import styles from './styles.module.css'
 
 export const All = () => {
-  const { applicationsCount, setApplicationsCount } = useApplicationsCount()
-  const [applications, setApplications] = useState(
-    coverLetterRepository.getAll(),
-  )
+  const { applications, setApplications } = useApplications()
 
   return (
     <div>
@@ -35,14 +31,13 @@ export const All = () => {
                   ({ id: cvId }) => cvId !== id,
                 )
                 setApplications(newApplications)
-                setApplicationsCount(newApplications.length)
                 coverLetterRepository.setAll(newApplications)
               }}
             />
           </div>
         ))}
       </div>
-      {applicationsCount < totalApplicationsGoal && (
+      {applications.length < totalApplicationsGoal && (
         <Goal action='link' to='/new' />
       )}
       <Space />

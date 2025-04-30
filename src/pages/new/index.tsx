@@ -12,7 +12,7 @@ import {
 } from '../../ui'
 import { Goal, PreviewContent } from '../../components'
 import { totalApplicationsGoal } from '../../utils/constants'
-import { useApplicationsCount } from '../../totalApplicationsContext'
+import { useApplications } from '../../applicationsContext'
 import { generateCoverLetter } from '../../api/generateCoverLetter'
 import { coverLetterRepository } from '../../repositories'
 
@@ -30,7 +30,7 @@ type Inputs = {
 const generateId = () => Date.now().toString()
 
 export const New = () => {
-  const { applicationsCount, setApplicationsCount } = useApplicationsCount()
+  const { applications, setApplications } = useApplications()
   const [isGenerating, setIsGenerating] = useState(false)
   const [previewText, setPreviewText] = useState<string>()
   const [lastClId, setLastClId] = useState<string>()
@@ -60,10 +60,10 @@ export const New = () => {
       }
       const id = generateId()
       setLastClId(id)
-      const total = coverLetterRepository.add({ cl: coverLetter, id })
-      setApplicationsCount(total)
+      coverLetterRepository.add({ cl: coverLetter, id })
+      setApplications(coverLetterRepository.getAll())
     },
-    [setApplicationsCount, lastClId],
+    [lastClId, setApplications],
   )
 
   const [jobTitle, companyName, additionalDetails] = useWatch({
@@ -152,7 +152,7 @@ export const New = () => {
         </div>
       </div>
 
-      {applicationsCount < totalApplicationsGoal && (
+      {applications.length < totalApplicationsGoal && (
         <>
           <Space />
           <Goal action='button' onCreate={onGoalClick} />

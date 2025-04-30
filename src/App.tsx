@@ -2,7 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { BrowserRouter } from 'react-router-dom'
 
 import { All, New } from './pages'
-import { ApplicationsCountProvider } from './totalApplicationsContext'
+import { ApplicationsProvider } from './applicationsContext'
 import { Layout } from './components'
 
 import './App.css'
@@ -10,7 +10,7 @@ import './App.css'
 function App() {
   return (
     <BrowserRouter>
-      <ApplicationsCountProvider>
+      <ApplicationsProvider>
         <Routes>
           <Route path='/' element={<Layout />}>
             <Route path='new' element={<New />} />
@@ -18,7 +18,7 @@ function App() {
             <Route index element={<Navigate to='new' />} />
           </Route>
         </Routes>
-      </ApplicationsCountProvider>
+      </ApplicationsProvider>
     </BrowserRouter>
   )
 }
