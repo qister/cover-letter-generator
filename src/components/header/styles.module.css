@@ -52,4 +52,8 @@
   .totalText {
     display: none;
   }
+
+  .header {
+    padding: var(--spacing-md);
+  }
 }
