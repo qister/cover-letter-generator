@@ -1,8 +1,6 @@
 .h1 {
-  /* font-size: 36px; */
-
   text-align: left;
-  font-family: 'FixelDisplay';
+  font-family: var(--font-family-title);
   font-weight: 600;
 }
 
