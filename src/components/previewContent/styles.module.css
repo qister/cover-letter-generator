@@ -8,7 +8,7 @@
 
 .previewContent {
   padding: 30px 30px 0 30px;
-  max-height: calc(100% - 30px);
+  max-height: calc(100% - 60px);
   overflow-y: auto;
   overflow-wrap: anywhere;
   color: var(--color-text-secondary);

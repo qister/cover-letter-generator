@@ -29,7 +29,7 @@ export const PreviewContent = ({
   }, [content])
 
   const textContent = useMemo(
-    () => `${content ?? placeholder}\n\n\n`,
+    () => content ?? placeholder,
     [content, placeholder],
   )
 
